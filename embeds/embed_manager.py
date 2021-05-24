@@ -2,8 +2,6 @@ import discord
 
 from configs import AUTHOR, URL, IMG_URL, EMBED_COLOUR, STATIC_BUILDS
 
-print('\nEmbed URL\'s\nURL: ' + URL + '\nImg URL: ' + IMG_URL + '\n')
-
 
 # Create Base Embed With discord.Embed
 def create_embed_(title=None, description=None):
@@ -38,12 +36,12 @@ class EmbedManager:
         # Built loop that uses values from config static builds as inputs
 
         for key in STATIC_BUILDS:
-            self.embed_dict[key] = create_embed_(title=key, description=STATIC_BUILDS[key][0])
+            self.embed_dict[key.capitalize()] = create_embed_(title=key.capitalize(), description=STATIC_BUILDS[key][0])
             self.create_statics(key=key)
 
     def create_statics(self, key):
         for field in STATIC_BUILDS[key][1]:
-            self.embed_dict[key].add_field(
+            self.embed_dict[key.capitalize()].add_field(
                 name=field[0],
                 value=field[1],
                 inline=field[2]

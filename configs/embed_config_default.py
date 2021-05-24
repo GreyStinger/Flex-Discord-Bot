@@ -14,6 +14,7 @@ servers = [
 ]
 
 # Static builds need their own list item in the same formatting as what the current ones are.
+# Add the aliases that you want the embed to be called with at the end of the list.
 # Comment out the current items if necessary
 # Static Builds:
 STATIC_BUILDS = {
@@ -21,4 +22,14 @@ STATIC_BUILDS = {
     'Servers': ['These are our currently hosted servers.', servers]
 }
 
-STATIC_NAMES = [key for key in STATIC_BUILDS]
+
+# Anything after this please ignore as it wont affect you.
+
+def name_builder():
+    item_list = []
+    for key in STATIC_BUILDS:
+        item_list.append(key.lower())
+    return item_list
+
+
+STATIC_NAMES = name_builder()
